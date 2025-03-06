@@ -1,0 +1,19 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+#div-container {
+  border: 3px solid black;
+  display: flex;
+  flex-wrap: wrap;
+  height: 800px;
+  width: 800px;
+  margin: 50px auto;
+  justify-content: stretch;
+  align-items: stretch;
+}
