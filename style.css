@@ -11,8 +11,8 @@ body {
   border: 3px solid black;
   display: flex;
   flex-wrap: wrap;
-  height: 800px;
-  width: 800px;
+  height: 720px;
+  width: 720px;
   margin: 50px auto;
   justify-content: stretch;
   align-items: stretch;

@@ -1,11 +1,14 @@
 const divContainer = document.querySelector("#div-container");
 let divVar;
-function createBoard() {
-  for (let i = 0; i < 16; i++) {
-    for (let j = 0; j < 16; j++) {
+let newSize = 16;
+function createBoard(newSize) {
+  size = 100 / newSize;
+  size = size.toFixed(2);
+  console.log(size);
+  for (let i = 0; i < newSize; i++) {
+    for (let j = 0; j < newSize; j++) {
       divVar = document.createElement("div");
-      divVar.style.cssText =
-        "width: 6%; height: 6%; flex: 1 1 auto; border: 1px solid black;";
+      divVar.style.cssText = `width: ${size}%; height: ${size}%; flex: 1 1 auto; border: 1px solid black;`;
       divVar.setAttribute("id", `${j.toString() + i.toString()}`);
       divVar.setAttribute("class", "divEtch");
       divContainer.appendChild(divVar);
@@ -21,9 +24,8 @@ function getList() {
   });
   return divList;
 }
-createBoard();
+createBoard(newSize);
 let divList = getList();
-let newSize;
 
 const clearButton = document.querySelector("#clear");
 const changeSizeButton = document.querySelector("#new-size");
@@ -32,13 +34,18 @@ clearButton.addEventListener("click", function () {
   divList.forEach(function (currentValue) {
     currentValue.remove();
   });
-  createBoard();
+  createBoard(newSize);
   divList = getList();
 });
 
 changeSizeButton.addEventListener("click", function () {
-  newSize = prompt("Enter a size between 0 - 100");
+  do {
+    newSize = prompt("Enter a size between 0 - 100");
+  } while (newSize < 0 || newSize > 100);
+
   divList.forEach(function (currentValue) {
     currentValue.remove();
   });
+  createBoard(newSize);
+  divList = getList();
 });
